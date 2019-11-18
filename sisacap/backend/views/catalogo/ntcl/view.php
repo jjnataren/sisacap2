@@ -6,12 +6,12 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Catalogo */
 
-$this->title =  'NTCL: ' . $model->NOMBRE;
+$this->title =  'RENEC: ' . $model->NOMBRE;
 $this->params['breadcrumbs'][] = ['label' => 'NTCL', 'url' => ['ntcl']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-   
+
 
     <p>
         <?= Html::a('Actualizar', ['ntcl-actualizar', 'id' => $model->ID_ELEMENTO], ['class' => 'btn btn-primary']) ?>
@@ -30,9 +30,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'ID_ELEMENTO',
             'CLAVE',
             ['attribute'=> 'ELEMENTO_PADRE',
-            'label'=>'Sector',		
+            'label'=>'Sector',
             'type'=>'raw',
-            'value'=> (isset($model->eLEMENTOPADRE) )? $model->eLEMENTOPADRE->NOMBRE : '<i>no establecido</i>'		
+            'value'=> (isset($model->eLEMENTOPADRE) )? $model->eLEMENTOPADRE->NOMBRE : '<i>no establecido</i>'
     		],
             'NOMBRE',
             'DESCRIPCION',

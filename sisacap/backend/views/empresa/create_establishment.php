@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
     <?= $this->render('_establishment_form.php', [
-        'model' => new Empresa(),
+        'model' => $model,
     ]) ?>
 
 </div>

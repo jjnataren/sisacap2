@@ -108,7 +108,14 @@ class KeyStorageController extends Controller
 
 
 
-            return $this->redirect(['empresa/index']);
+            Yii::$app->session->setFlash('alert', [
+                'options'=>['class'=>'alert-success'],
+
+                'body'=> '<i class="fa fa-check"></i> Configuración guardada correctamente.',
+            ]);
+
+
+            return $this->redirect(['/']);
         } else {
             return $this->render('create_mail', [
                 'username' => $username,

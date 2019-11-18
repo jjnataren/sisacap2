@@ -70,22 +70,26 @@ class Empresa extends \yii\db\ActiveRecord
 	const SGS_ISSSTE=2;
 	const SGS_PROPIO=3;
 	const SGS_NO_CUENTA=4;
-	
+
 	public $SGS_TIPOS = [
-	
+
 	self::SGS_IMMS => 'IMSS',
 	self::SGS_ISSSTE => 'ISSSTE',
 	self::SGS_PROPIO => 'PROPIO',
 	self::SGS_NO_CUENTA => 'NO CUENTA',
 	];
-	
+
 	const STATUS_DELETED = 0;
 	const STATUS_ACTIVE = 1;
 	public $PICTURES =[];
-	
-	
-	
-	
+
+
+
+	const SCENARIO_NEW_STA = 'new_sta';
+
+
+
+
 	/**
 	 * Returns user statuses list
 	 * @param bool $status
@@ -98,43 +102,43 @@ class Empresa extends \yii\db\ActiveRecord
 		];
 		return $status ? ArrayHelper::getValue($statuses, $status) : $statuses;
 	}
-	
-	
+
+
 	/**
 	 *
 	 */
 	public static function  getNoAdministradas(){
-	
+
 		return Empresa::findBySql('select * from tbl_empresa where id_empresa not in (select ID_EMPRESA from
 				tbl_empresa_usuario where ACTIVO = 1) and id_empresa_padre is null')->all();
-	
+
 	}
-	
+
 	/**
 	 *
 	 */
 	public static function  getAdministradas(){
-	
+
 		return Empresa::findBySql('select  * from tbl_empresa where id_empresa in (SELECT DISTINCT ID_EMPRESA from tbl_empresa_usuario where ACTIVO = 1)')->all();
-	
+
 	}
-	
-	
+
+
 	/**
 	 *gets  the  total workers of a particular empresa
 	 */
 	public  function  getTotalWorkers(){
-		
+
 	  $rows = Yii::$app->db->createCommand('SELECT COUNT(*)  FROM  tbl_trabajador where id_empresa in ( select id_empresa from tbl_empresa where id_empresa =  ' . $this->ID_EMPRESA .  ' OR id_empresa_padre ='.$this->ID_EMPRESA .') AND ACTIVO=1' )->queryScalar();
-		
+
 		return $rows;
-	
+
 	}
-	
+
 	public function scenarios()
 	{
 		$scenarios = parent::scenarios();
-		$scenarios['establecimiento'] = ['RFC','NOMBRE_RAZON_SOCIAL'];
+		$scenarios[self::SCENARIO_NEW_STA] = ['NOMBRE_CENTRO_TRABAJO','NOMBRE_COMERCIAL'];
 		return $scenarios;
 	}
 	/**
@@ -151,20 +155,26 @@ class Empresa extends \yii\db\ActiveRecord
     public function rules()
     {
          return [
+
+            [['NOMBRE_CENTRO_TRABAJO', 'NOMBRE_COMERCIAL'], 'required', 'on' => self::SCENARIO_NEW_STA],
             [['ID_EMPRESA_PADRE', 'ID_REPRESENTANTE_LEGAL', 'MORAL', 'GIRO_PRINCIPAL', 'NUMERO_TRABAJADORES',  'TIPO', 'ESQUEMA_SEGURIDAD_SOCIAL', 'ACTIVO'], 'integer'],
             [['FECHA_INICIO_OPERACIONES'], 'safe'],
             [['NOMBRE_RAZON_SOCIAL', 'CALLE', 'COLONIA', 'TELEFONO', 'MUNICIPIO_DELEGACION', 'CODIGO_POSTAL', 'CORREO_ELECTRONICO','CORREO_ELECTRONICO_EMPRESA'], 'string', 'max' => 300],
             [['ALIAS'], 'string', 'max' => 20],
             [['NSS'],'string', 'max'=>20],
             [['RFC'], 'string', 'max' => 13],
-            [['RFC','NOMBRE_RAZON_SOCIAL'],'required','message' =>'El dato es obligatorio'],
+            [['RFC','NOMBRE_RAZON_SOCIAL'],'required','message' =>'Campo obligatorio'],
             [['CURP'], 'string', 'max' => 18],
             [['NUMERO_EXTERIOR', 'NUMERO_INTERIOR', 'ENTIDAD_FEDERATIVA', 'LOCALIDAD', 'NUM_CONTACTO', 'NOMBRE_CENTRO_TRABAJO', 'NOMBRE_COMERCIAL'], 'string', 'max' => 100],
             [['OTRO_GIRO', 'DOMICILIO'], 'string', 'max' => 200],
             [['NOMBRE_CONTACTO'], 'string', 'max' => 250],
             [['FAX'], 'string', 'max' => 50],
             [['PICTURE'], 'string', 'max' => 2048],
-            [['CORREO_ELECTRONICO'], 'email',]
+            [['CORREO_ELECTRONICO'], 'email',],
+
+
+
+
         ];
     }
 
@@ -208,6 +218,7 @@ class Empresa extends \yii\db\ActiveRecord
             'ACTIVO' => 'Activo',
             'FECHA_INICIO_OPERACIONES' => 'Fecha inicio de operaciones',
             'CORREO_ELECTRONICO_EMPRESA' => 'Correo electrónico',
+
         ];
     }
 
@@ -290,7 +301,7 @@ class Empresa extends \yii\db\ActiveRecord
     {
     	return $this->hasMany(ListaEstablecimiento::className(), ['ID_ESTABLECIMIENTO' => 'ID_EMPRESA']);
     }
-    
+
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -298,11 +309,11 @@ class Empresa extends \yii\db\ActiveRecord
     {
     	return $this->hasMany(ListaPlan::className(), ['ID_LISTA' => 'ID_LISTA'])->viaTable('tbl_lista_establecimiento', ['ID_ESTABLECIMIENTO' => 'ID_EMPRESA']);
     }
-    
+
     /**
      * @return \yii\db\ActiveQuery
      */
-    
+
     public function getPlans()
     {
         return $this->hasMany(Plan::className(), ['ID_EMPRESA' => 'ID_EMPRESA']);
@@ -315,7 +326,7 @@ class Empresa extends \yii\db\ActiveRecord
     {
     	return $this->hasMany(PlanEstablecimiento::className(), ['ID_ESTABLECIMIENTO' => 'ID_EMPRESA']);
     }
-    
+
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -323,11 +334,11 @@ class Empresa extends \yii\db\ActiveRecord
     {
     	return $this->hasMany(Plan::className(), ['ID_PLAN' => 'ID_PLAN'])->viaTable('tbl_plan_establecimiento', ['ID_ESTABLECIMIENTO' => 'ID_EMPRESA']);
     }
-    
+
     /**
      * @return \yii\db\ActiveQuery
      */
-    
+
     public function getPuestoEmpresas()
     {
         return $this->hasMany(PuestoEmpresa::className(), ['ID_EMPRESA' => 'ID_EMPRESA']);

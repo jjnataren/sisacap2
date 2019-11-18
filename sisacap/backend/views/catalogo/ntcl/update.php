@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $model backend\models\Catalogo */
 
 $this->title = 'Actualizar norma técnica de competencia laboral : ' . ' ' . $model->NOMBRE;
-$this->params['breadcrumbs'][] = ['label' => 'NTCL', 'url' => ['ntcl']];
+$this->params['breadcrumbs'][] = ['label' => 'RENEC', 'url' => ['ntcl']];
 $this->params['breadcrumbs'][] = 'Actualizar';
 ?>
 

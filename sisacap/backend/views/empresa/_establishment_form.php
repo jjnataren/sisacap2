@@ -141,14 +141,15 @@ $this->registerJs("$('#drop_giro').change(function(){
 							<?= $form->field($model, 'NOMBRE_CENTRO_TRABAJO')->textInput(['maxlength' => 300]) ?>
 
 
+						<?= $form->field($model, 'NOMBRE_COMERCIAL')->textInput(['maxlength' => 300]) ?>
+
+
     <?= $form->field($model, 'RFC')->textInput(['maxlength' => 13]) ?>
 
     <?= $form->field($model, 'CURP')->textInput(['maxlength' => 18,'id'=>"txt_curp"]) ?>
 
 
-
-						<?= $form->field($model, 'NOMBRE_COMERCIAL')->textInput(['maxlength' => 300]) ?>
-						 <?= $form->field($model, 'ESQUEMA_SEGURIDAD_SOCIAL')->dropDownList($itemsSex,['prompt'=>'-- Seleccione  --','id' => 'esquemaSeg']) ?>
+		 <?= $form->field($model, 'ESQUEMA_SEGURIDAD_SOCIAL')->dropDownList($itemsSex,['prompt'=>'-- Seleccione  --','id' => 'esquemaSeg']) ?>
                         <?= $form->field($model, 'GIRO_PRINCIPAL')->dropDownList($dataListGiro,['prompt'=>'-- Seleccione  --','maxlength' => 300, 'id'=>'drop_giro']) ?>
 
     					<?= $form->field($model, 'OTRO_GIRO')->textInput(['maxlength' => 200,'id'=>'txt_giro_otro']) ?>

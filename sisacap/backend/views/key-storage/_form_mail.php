@@ -26,7 +26,10 @@ use yii\bootstrap\ActiveForm;
 	    <?= $form->field($port, '[3]value')->textInput()->label("Puerto") ?>
 	</div>
     <div class="col-md-6">
-    	<?= $form->field($encryption, '[4]value')->textInput()->label("Tipo encriptación") ?>
+    	<?= $form->field($encryption, '[4]value')->dropDownList(['tls'=>'tls', 'ssl'=>'ssl'],['id' => 'tex-sex'])->label("Tipo encriptación") ?>
+
+
+
 	</div>
 
 	<div class="col-md-8">

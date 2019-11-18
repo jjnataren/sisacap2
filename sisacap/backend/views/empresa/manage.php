@@ -14,18 +14,18 @@ use backend\models\RepresentanteLegalSearch;
 /* @var $model backend\models\Empresa */
 
 $this->title = Yii::t ( 'backend', 'Administrar empresa' );
-$this->params ['breadcrumbs'] [] = [ 
+$this->params ['breadcrumbs'] [] = [
 		'label' => 'Empresas',
-		'url' => [ 
-				'index'     
-		] 
+		'url' => [
+				'index'
+		]
 ];
-$this->params ['breadcrumbs'] [] = [ 
+$this->params ['breadcrumbs'] [] = [
 		'label' => $model->NOMBRE_RAZON_SOCIAL,
-		'url' => [ 
+		'url' => [
 				'view',
-				'id' => $model->ID_EMPRESA 
-		] 
+				'id' => $model->ID_EMPRESA
+		]
 ];
 $this->params ['breadcrumbs'] [] = $this->title;
 
@@ -43,7 +43,7 @@ $this->registerJs("$('#ownerpop').popover('hide');", View::POS_END, 'my-options1
   								<i class="fa fa-square-o fa-stack-2x"></i>
   								<i class="fa fa-building fa-lg  fa-stack-1x"></i>
 							   </span>
-	<?= Html::encode(strtoupper(substr($model->NOMBRE_RAZON_SOCIAL,0,40).'...')) ?><small> &nbsp;Empresa</small></h2>
+	<?= Html::encode(strtoupper(substr($model->NOMBRE_RAZON_SOCIAL,0,40))) ?></h2>
 
 
 
@@ -55,12 +55,12 @@ $this->registerJs("$('#ownerpop').popover('hide');", View::POS_END, 'my-options1
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3><i class="fa fa-suitcase"></i> <?= Yii::t('backend', 'Representante Legal') ?><small>&nbsp;&nbsp;<?= Yii::t('backend', 'Propietario de la empresa') ?>.</small> </h3>
-				
+
 			</div>
 			<div class="panel-body">
-			
+
 			<?php if ( isset($model->iDREPRESENTANTELEGAL)){ ?>
-			
+
 				<?= DetailView::widget([
         'model' => $model->iDREPRESENTANTELEGAL,
         'attributes' => [
@@ -70,33 +70,33 @@ $this->registerJs("$('#ownerpop').popover('hide');", View::POS_END, 'my-options1
             'APM',
             'CORREO_ELECTRONICO',
             'TELEFONO',
-            'DOMICILIO',           
+            'DOMICILIO',
             //'ACTIVO',
         ],
 		'options' =>['class' => 'table table-condensed'],
     ]) ?>
-			
+
 			<?php } else{
-				
+
 				echo Yii::t('backend', 'not set');
-				
+
 			}?>
-			
-			
+
+
 			</div>
-			
+
 			<div class="panel-footer">
-						
-				
-						
+
+
+
 						<button id="userpop2" tabindex="0" class="btn" role="button" data-toggle="popover" data-trigger="focus" title="Ayuda" data-content="<?=Yii::t('backend', 'Presiona el boton [Seleccionar] para elijir un representante legal. ') ?>"><i class="fa fa-question-circle"></i></button>
-						
+
 						<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#legalModal" id="userButton" >
 						 <i class="fa fa-check-square"></i>&nbsp;<?= Yii::t('backend', 'Seleccionar')?>
                         </a>
-                        
-                        
-                        
+
+
+
                         <div class="modal fade" id="legalModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
@@ -105,13 +105,13 @@ $this->registerJs("$('#ownerpop').popover('hide');", View::POS_END, 'my-options1
                                             <h4 class="modal-title" id="myModalLabel"><?=Yii::t('backend', 'Seleccionar un representante legal para esta empresa') ?></h4>
                                         </div>
 	                                        <div class="modal-body">
-	                                         	 <?php \yii\widgets\Pjax::begin(); ?>	
+	                                         	 <?php \yii\widgets\Pjax::begin(); ?>
 	                                        	  <?= GridView::widget([
 												        'dataProvider' => $dataProvider_lr,
 												        'filterModel' => $searchModel_lr,
 												        'columns' => [
-												
-												
+
+
 												            'ID_REPRESENTANTE_LEGAL',
 												            'NOMBRE',
 												            'APP',
@@ -124,12 +124,12 @@ $this->registerJs("$('#ownerpop').popover('hide');", View::POS_END, 'my-options1
 												            'CORREO_ELECTRONICO',
 												            // 'ACTIVO',
 												            // 'NSS',
-												
+
 												           [
 															'label'=>'',
 															'format'=>'raw',
 															'value' => function($data){
-																	
+
 																return  Html::a(Yii::t('backend', 'Agregar') .'&nbsp;<i class="fa fa-check-circle-o"></i>', Url::current(['id_legal'=>$data->ID_REPRESENTANTE_LEGAL]),
 																		['class' => 'btn btn-primary',
 																		'data-loading-text'=>"Loading...",
@@ -145,32 +145,32 @@ $this->registerJs("$('#ownerpop').popover('hide');", View::POS_END, 'my-options1
 																);
 															}
 															],
-				
+
 												        ],
 												    ]); ?>
 									<?php \yii\widgets\Pjax::end(); ?>
 										</div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal"> <?= Yii::t('backend', 'Salir')?></button>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        
-                        
-		
+
+
+
 			</div>
 		</div>
 
-		
+
 	</div>
 	<div class=" col-xs-12 col-sm-12 col-md-6 ">
-	
+
 				<div class="panel panel-default">
 			<div class="panel-heading"><h3><i class="fa fa-users"></i> <?= Yii::t('backend', 'Usuarios') ?><small>&nbsp;&nbsp;<?= Yii::t('backend', ' que pueden administrar la empresa') ?>.</small></h3></div>
 			<div class="panel-body">
-			
+
 		<table class="table">
 		<thead>
 			<tr>
@@ -182,9 +182,9 @@ $this->registerJs("$('#ownerpop').popover('hide');", View::POS_END, 'my-options1
 			</tr>
 		</thead>
 		<tbody>
-		
+
 		<?php foreach ($model->empresaUsuarios as $user) : ?>
-		
+
 		<?php if ($user->iDUSUARIO->role != User::ROLE_INSTRUCTOR):?>
 			<tr>
 				<td><?= $user->iDUSUARIO->id;?></td>
@@ -192,20 +192,20 @@ $this->registerJs("$('#ownerpop').popover('hide');", View::POS_END, 'my-options1
 				<td><?= $user->iDUSUARIO->email;?></td>
 				<td><?= $user->FECHA_AGREGO;?></td>
 				<td><?php echo Html::a('<i class="fa fa fa-user-times"></i>', ['empresa/deleteuser', 'id'=>$model->ID_EMPRESA, 'id_user'=>$user->ID_USUARIO],['class'=>'btn btn-danger',  'data-confirm'=>'¿Realmente quiere desasignar este usuario?'] ); ?></td>
-				
-			</tr>			
-		<?php endif;?>	
-		<?php endforeach;?>	
+
+			</tr>
+		<?php endif;?>
+		<?php endforeach;?>
 		</tbody>
 	</table>
-	
-	
-			
-			
+
+
+
+
 			</div>
-			
+
 			<div class="panel-footer">
-						
+
 						<button id="ownerpop" tabindex="0" type="button" class="btn" data-toggle="popover" title="Ayuda" data-content="<?=Yii::t('backend', 'Presiona el boton [Agregar] y acontinuación selecciona el usuario') ?>"><i class="fa fa-question-circle"></i>
 						</button>
 						<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#userModal" id="userButton">
@@ -219,8 +219,8 @@ $this->registerJs("$('#ownerpop').popover('hide');", View::POS_END, 'my-options1
                                             <h4 class="modal-title" id="myModalLabel"><?=Yii::t('backend', 'Añadir un usuario manager a esta empresa') ?></h4>
                                         </div>
 	                                        <div class="modal-body">
-	                                        	 <?php \yii\widgets\Pjax::begin(); ?>	
-	                                        	 
+	                                        	 <?php \yii\widgets\Pjax::begin(); ?>
+
 	                                        	  <?= GridView::widget([
 											        'dataProvider' => $dataProvider,
 											        'filterModel' => $searchModel,
@@ -246,42 +246,42 @@ $this->registerJs("$('#ownerpop').popover('hide');", View::POS_END, 'my-options1
 														'label'=>'',
 														'format'=>'raw',
 														'value' => function($data){
-																	
-															return  Html::a('<i class="fa fa-user-plus"></i>', Url::current(['id_u'=>$data->id]), 
+
+															return  Html::a('<i class="fa fa-user-plus"></i>', Url::current(['id_u'=>$data->id]),
 																							['class' => 'btn btn-primary',
 																							'data-loading-text'=>"Loading...",
 																							'id'=>'user_'.$data->id,
-																							'onclick'=>"  
+																							'onclick'=>"
 																										//$('#user_$data->id').removeAttr('href');
 																										$('#user_$data->id').fadeIn(300);
 																										$('#user_$data->id').text('Agregando ...');
 																										$('#user_$data->id').removeClass('btn btn-primary').addClass('btn btn-success');
-																									return true;  
+																									return true;
 																										",
 																							]
 																							);
 														}
 														],
-											      
+
 											        ],
 											    ]); ?>
 											    	    	<?php \yii\widgets\Pjax::end(); ?>
 										</div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal"> <?= Yii::t('backend', 'Salir')?></button>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            
-                            
+
+
        		 </div>
 		</div>
-			
+
 	</div>
 
-  
+
 
 
 
@@ -291,12 +291,12 @@ $this->registerJs("$('#ownerpop').popover('hide');", View::POS_END, 'my-options1
 <div class="row">
 
 <div class=" col-xs-12 col-sm-12 col-md-6 ">
-	
+
 				<div class="panel panel-default">
 			<div class="panel-heading"><h3><i class="fa fa-graduation-cap"></i> <?= Yii::t('backend', 'Instructores') ?><small>&nbsp;&nbsp;
 			<?= Yii::t('backend', ' que evaluaran los cursos de la empresa') ?>.</small></h3></div>
 			<div class="panel-body">
-			
+
 		<table class="table">
 		<thead>
 			<tr>
@@ -308,7 +308,7 @@ $this->registerJs("$('#ownerpop').popover('hide');", View::POS_END, 'my-options1
 			</tr>
 		</thead>
 		<tbody>
-		
+
 		<?php foreach ($model->empresaUsuarios as $user) : ?>
 		 <?php if ($user->iDUSUARIO->role === User::ROLE_INSTRUCTOR):?>
 			<tr>
@@ -317,20 +317,20 @@ $this->registerJs("$('#ownerpop').popover('hide');", View::POS_END, 'my-options1
 				<td><?= $user->iDUSUARIO->email;?></td>
 				<td><?= $user->FECHA_AGREGO;?></td>
 				<td><?php echo Html::a('<i class="fa fa fa-user-times"></i>', ['empresa/deleteuser', 'id'=>$model->ID_EMPRESA, 'id_user'=>$user->ID_USUARIO],['class'=>'btn btn-danger',  'data-confirm'=>'¿Realmente quiere desasignar este usuario?'] ); ?></td>
-				
-			</tr>			
-		<?php endif;?>	
-		<?php endforeach;?>	
+
+			</tr>
+		<?php endif;?>
+		<?php endforeach;?>
 		</tbody>
 	</table>
-	
-	
-			
-			
+
+
+
+
 			</div>
-			
+
 			<div class="panel-footer">
-						
+
 						<button id="ownerpop" tabindex="0" type="button" class="btn" data-toggle="popover" title="Ayuda" data-content="<?=Yii::t('backend', 'Presiona el boton [Agregar] y acontinuación selecciona el usuario') ?>"><i class="fa fa-question-circle"></i>
 						</button>
 						<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#instructorModal" id="userButton">
@@ -344,8 +344,8 @@ $this->registerJs("$('#ownerpop').popover('hide');", View::POS_END, 'my-options1
                                             <h4 class="modal-title" id="myModalLabel"><?=Yii::t('backend', 'Añadir un usuario instructor a esta empresa') ?></h4>
                                         </div>
 	                                        <div class="modal-body">
-	                                        	 <?php \yii\widgets\Pjax::begin(); ?>	
-	                                        	 
+	                                        	 <?php \yii\widgets\Pjax::begin(); ?>
+
 	                                        	  <?= GridView::widget([
 											        'dataProvider' => $instructorDataProvider,
 											        'filterModel' => $searchModel,
@@ -371,39 +371,39 @@ $this->registerJs("$('#ownerpop').popover('hide');", View::POS_END, 'my-options1
 														'label'=>'',
 														'format'=>'raw',
 														'value' => function($data){
-																	
-															return  Html::a('<i class="fa fa-user-plus"></i>', Url::current(['id_u'=>$data->id]), 
+
+															return  Html::a('<i class="fa fa-user-plus"></i>', Url::current(['id_u'=>$data->id]),
 																							['class' => 'btn btn-primary',
 																							'data-loading-text'=>"Loading...",
 																							'id'=>'user_'.$data->id,
-																							'onclick'=>"  
+																							'onclick'=>"
 																										//$('#user_$data->id').removeAttr('href');
 																										$('#user_$data->id').fadeIn(300);
 																										$('#user_$data->id').text('Agregando ...');
 																										$('#user_$data->id').removeClass('btn btn-primary').addClass('btn btn-success');
-																									return true;  
+																									return true;
 																										",
 																							]
 																							);
 														}
 														],
-											      
+
 											        ],
 											    ]); ?>
 											    	    	<?php \yii\widgets\Pjax::end(); ?>
 										</div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal"> <?= Yii::t('backend', 'Salir')?></button>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            
-                            
+
+
        		 </div>
 		</div>
-			
+
 	</div>
 </div>
 

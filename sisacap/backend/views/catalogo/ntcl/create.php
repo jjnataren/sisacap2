@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Catalogo */
 
-$this->title = 'Crear ntcl';
+$this->title = 'Crear RENEC';
 $this->params['breadcrumbs'][] = ['label' => 'NTCL', 'url' => ['ntcl']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

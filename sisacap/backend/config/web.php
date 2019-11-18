@@ -66,6 +66,7 @@ $config = [
 
         'mail' => [
         'class' => 'yii\swiftmailer\Mailer',
+            'useFileTransport' => false,
         'transport' => [
         'class' => 'Swift_SmtpTransport',
         'host' => 'smtp.gmail.com',  // e.g. smtp.mandrillapp.com or smtp.gmail.com
@@ -73,6 +74,7 @@ $config = [
         'password' => 'sisacap123',
         'port' => '587', // Port 25 is a very common port too
         'encryption' => 'tls', // It is often used, check your provider or mail server specs
+      //  'authentication' =>'plain'
         ],
         ],
 
@@ -146,7 +148,7 @@ $config = [
             'controllers'=>['empresa'],
             'allow' => true,
             'roles' => ['manager'],
-            'actions'=>['viewbyuser', 'updatebyuser','deletebyuser','indexestablishment','establishments','avatar-upload', 'createestablishment',
+            'actions'=>['viewbyuser', 'test-mail', 'updatebyuser','deletebyuser','indexestablishment','establishments','avatar-upload', 'createestablishment',
 						'viewbystablishment' , 'updatebystableshiment', 'dashboard','getmunicipios','acces-submanager',	]
             ],
 

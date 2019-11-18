@@ -172,6 +172,20 @@ class UserController extends Controller
 
     	try {
 
+
+
+
+    	  Yii::$app->mail->setTransport([
+    	      'class' => 'Swift_SmtpTransport',
+    	      'host' => Yii::$app->keyStorage->get('com.sisacap.mail.host', null),  // e.g. smtp.mandrillapp.com or smtp.gmail.com
+    	      'username' => Yii::$app->keyStorage->get('com.sisacap.mail.username',null),
+    	      'password' => Yii::$app->keyStorage->get('com.sisacap.mail.password', null),
+    	      'port' => Yii::$app->keyStorage->get('com.sisacap.mail.port',null), // Port 25 is a very common port too
+    	      'encryption' => Yii::$app->keyStorage->get('com.sisacap.mail.encryption', null), // It is often used, check your provider or mail server specs
+    	      //  'authentication' =>'plain'
+    	  ]);
+
+
     		Yii::$app->mail->compose('@app/views/user/notifications/new_user', ['model'=>$user])
     		->setFrom("sisacap@gmail.com")
     		->setTo($email)

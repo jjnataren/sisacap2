@@ -135,6 +135,8 @@ $this->registerJs("$('#drop_giro').change(function(){
 
 							<?= $form->field($model, 'NOMBRE_CENTRO_TRABAJO')->textInput(['maxlength' => 300]) ?>
 
+							<?= $form->field($model, 'NOMBRE_COMERCIAL')->textInput(['maxlength' => 300]) ?>
+
 
 					    <?= $form->field($model, 'RFC')->textInput(['maxlength' => 13]) ?>
 
@@ -144,7 +146,6 @@ $this->registerJs("$('#drop_giro').change(function(){
 
 
 
-						<?= $form->field($model, 'NOMBRE_COMERCIAL')->textInput(['maxlength' => 300]) ?>
 						 <?= $form->field($model, 'ESQUEMA_SEGURIDAD_SOCIAL')->dropDownList($itemsSex,['prompt'=>'-- Seleccione  --','id' => 'esquemaSeg']) ?>
                     	    <?= $form->field($model, 'NSS')->textInput(['maxlength' => 14, 'id'=>'txt_nss']) ?>
 
