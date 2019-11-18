@@ -279,11 +279,7 @@ class PlanController extends Controller
     		$planModel->FECHA_AGREGO = date('Y-m-d H:i');
 
 
-    		if($numTrab = $planModel-> TOTAL_HOMBRES + $planModel->TOTAL_MUJERES){
 
-
-    			echo $numTrab;
-    		}
 
 
     		$planModel->ACTIVO = 1;
