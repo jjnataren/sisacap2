@@ -159,7 +159,7 @@ class Empresa extends \yii\db\ActiveRecord
             [['NOMBRE_CENTRO_TRABAJO', 'NOMBRE_COMERCIAL'], 'required', 'on' => self::SCENARIO_NEW_STA],
             [['ID_EMPRESA_PADRE', 'ID_REPRESENTANTE_LEGAL', 'MORAL', 'GIRO_PRINCIPAL', 'NUMERO_TRABAJADORES',  'TIPO', 'ESQUEMA_SEGURIDAD_SOCIAL', 'ACTIVO'], 'integer'],
             [['FECHA_INICIO_OPERACIONES'], 'safe'],
-            [['NOMBRE_RAZON_SOCIAL', 'CALLE', 'COLONIA', 'TELEFONO', 'MUNICIPIO_DELEGACION', 'CODIGO_POSTAL', 'CORREO_ELECTRONICO','CORREO_ELECTRONICO_EMPRESA'], 'string', 'max' => 300],
+            [['NOMBRE_RAZON_SOCIAL', 'CALLE', 'COLONIA', 'TELEFONO', 'MUNICIPIO_DELEGACION', 'CORREO_ELECTRONICO','CORREO_ELECTRONICO_EMPRESA'], 'string', 'max' => 300],
             [['ALIAS'], 'string', 'max' => 20],
             [['NSS'],'string', 'max'=>20],
             [['RFC'], 'string', 'max' => 13],

@@ -10,7 +10,7 @@ $this->params['titleIcon'] = '<span class="fa-stack fa-lg">
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
-  
+
 <div class=" col-xs-12 col-sm-12 col-md-12">
 				<div class="panel panel-info">
 					<div class="panel-heading">
@@ -18,6 +18,9 @@ $this->params['breadcrumbs'][] = $this->title;
 						<?= Yii::t('backend', 'Detalles') ?> <small>del representante legal</small> </h3>
 					</div>
 					<div class="panel-body">
+
+				<?php if($model) :?>
+
 <?= DetailView::widget([
 		'model' => $model,
 		'attributes' => [
@@ -35,7 +38,11 @@ $this->params['breadcrumbs'][] = $this->title;
 		//'NSS',
 		],
     ]) ?>
-    
+
+    	<?php else:?>
+
+    		<h1>No se ha asignado representeante legal</h1>
+    	<?php endif;?>
 </div>
 
 </div>
