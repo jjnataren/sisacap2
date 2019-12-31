@@ -441,7 +441,11 @@ class ConstanciasController extends \yii\web\Controller
     	//$workerModel->PUESTO
 
 
-    	$constanciaModel = new Constancia();
+    	$constanciaModel = Constancia::findOne(['ID_TRABAJADOR'=>$id_trab, 'ID_CURSO'=>$id]);
+
+    	$constanciaModel = ($constanciaModel)?$constanciaModel :   new Constancia();
+
+
 
     	$constanciaModel->ACTIVO = 1;
     	$constanciaModel->ESTATUS = Constancia::STATUS_ALREADY;
