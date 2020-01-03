@@ -306,8 +306,19 @@ class ConstanciasController extends \yii\web\Controller
 
     	try {
 
+
+    	    Yii::$app->mail->setTransport([
+    	        'class' => 'Swift_SmtpTransport',
+    	        'host' => Yii::$app->keyStorage->get('com.sisacap.mail.host', null),  // e.g. smtp.mandrillapp.com or smtp.gmail.com
+    	        'username' => Yii::$app->keyStorage->get('com.sisacap.mail.username',null),
+    	        'password' => Yii::$app->keyStorage->get('com.sisacap.mail.password', null),
+    	        'port' => Yii::$app->keyStorage->get('com.sisacap.mail.port',null), // Port 25 is a very common port too
+    	        'encryption' => Yii::$app->keyStorage->get('com.sisacap.mail.encryption', null), // It is often used, check your provider or mail server specs
+    	        //  'authentication' =>'plain'
+    	    ]);
+
     		Yii::$app->mail->compose('@app/views/constancias/mail-templates/notification_constancia', ['model'=>$constanciaModel])
-    		->setFrom("sisacap@gmail.com")
+    		->setFrom("admin@cultasoft.com")
     		->setTo($email)
     		->setSubject('Notificaciones SISACAP.  Constancia de capacitación')
     		->send();

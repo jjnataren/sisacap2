@@ -12,7 +12,7 @@
 	* { margin:0;}
 	.fr1 { font-size:12pt; font-family:Liberation Serif; vertical-align:top; writing-mode:lr-tb; margin-left:0.319cm; margin-right:0.319cm; padding:0.002cm; border-style:none; }
 	.Heading_20_2 { font-size:12pt; font-family:Arial; writing-mode:lr-tb; text-align:center ! important; color:#ffffff; font-weight:bold; }
-	.Heading_20_5 { font-size:11pt; font-family:Arial; writing-mode:lr-tb; text-align:center ! important; color:#ffffff; font-weight:bold; }
+	.Heading_20_5http://sisacap.local/lista-plan/report-pdf-all?id=1&paquete=1 { font-size:11pt; font-family:Arial; writing-mode:lr-tb; text-align:center ! important; color:#ffffff; font-weight:bold; }
 	.P1 { font-size:9pt; text-align:center ! important; font-family:Arial Narrow; writing-mode:lr-tb; }
 	.P10 { font-size:2pt; font-family:Arial Narrow; writing-mode:lr-tb; text-align:center ! important; }
 	.P11 { font-size:2pt; font-family:Arial Narrow; writing-mode:lr-tb; }
@@ -405,7 +405,7 @@
 	.T2 { font-family:Arial; font-size:9pt; font-weight:bold; }
 	.T22 { font-family:Arial Narrow; font-size:2pt; font-weight:bold; }
 	.T24 { font-family:Arial Narrow; font-size:8pt; font-weight:bold; }
-	.T25 { font-family:Arial Narrow; font-size:7pt; }
+	.T25 { font-family:Arial Narrow; font-size:5pt; }
 	.T26 { font-family:Arial Narrow; font-size:7pt; }
 	.T27 { font-family:Arial Narrow; font-size:7.5pt; }
 	.T31 { vertical-align:super; font-size:58%;font-family:Arial Narrow; font-size:9pt; }
@@ -416,7 +416,7 @@
 	.T6 { font-family:Arial; font-size:8pt; font-weight:bold; }
 	.P122{ font-size:9.5pt; margin-bottom:0cm; margin-top:0cm; font-family:Arial Narrow; writing-mode:lr-tb; }
 	.Titulos{ font-size:11.5pt; margin-bottom:0cm; margin-top:0cm; font-family:Arial Narrow; writing-mode:lr-tb;  }
-	.TextoIndicativo{ font-size:10pt; margin-bottom:0cm; margin-top:0cm; font-family:Arial Narrow; }
+	.TextoIndicativo{ font-size:9pt; margin-bottom:0cm; margin-top:0cm; font-family:Arial Narrow; }
 	.TextoUsuario{ font-size:9.5pt; margin-bottom:0cm; margin-top:0cm; font-family:Arial Narrow; writing-mode:lr-tb;  }
 	.TextoDetalle{ font-size:6pt; margin-bottom:0cm; margin-top:0cm; font-family:Arial Narrow; writing-mode:lr-tb;  }
 	.bordered_cell{background:#e8e8e8; border-top-width:0.04cm; border-left-width:0.04cm;  border-right-width:0.04cm; border-style:solid; border-bottom-width:0.04cm; border-color:#c1c1c1; }
