@@ -336,7 +336,7 @@ class EmpresaController extends Controller
     		$empresa->FECHA_INICIO_OPERACIONES = ($tmpdate === false )? null : $tmpdate->format('Y-m-d') ;
 
 
-    	 IF ($empresa->save()) {
+    	 if ($empresa->save()) {
     	 	Yii::$app->session->setFlash('alert', [
     	 	'options'=>['class'=>'alert-success'],
 

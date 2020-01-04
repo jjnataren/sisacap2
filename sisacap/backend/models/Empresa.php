@@ -138,7 +138,7 @@ class Empresa extends \yii\db\ActiveRecord
 	public function scenarios()
 	{
 		$scenarios = parent::scenarios();
-		$scenarios[self::SCENARIO_NEW_STA] = ['NOMBRE_CENTRO_TRABAJO','NOMBRE_COMERCIAL'];
+		$scenarios[self::SCENARIO_NEW_STA] = ['NOMBRE_CENTRO_TRABAJO','NOMBRE_COMERCIAL','RFC','CURP','ESQUEMA_SEGURIDAD_SOCIAL','NSS','GIRO_PRINCIPAL','OTRO_GIRO','FECHA_INICIO_OPERACIONES','NOMBRE_CONTACTO','NUM_CONTACTO','TELEFONO','CORREO_ELECTRONICO','CALLE','NUMERO_EXTERIOR','NUMERO_INTERIOR','COLONIA','ENTIDAD_FEDERATIVA','CODIGO_POSTAL','LOCALIDAD'];
 		return $scenarios;
 	}
 	/**
@@ -169,6 +169,8 @@ class Empresa extends \yii\db\ActiveRecord
             [['OTRO_GIRO', 'DOMICILIO'], 'string', 'max' => 200],
             [['NOMBRE_CONTACTO'], 'string', 'max' => 250],
             [['FAX'], 'string', 'max' => 50],
+            [['CODIGO_POSTAL'], 'string', 'max' => 5],
+
             [['PICTURE'], 'string', 'max' => 2048],
             [['CORREO_ELECTRONICO'], 'email',],
 
