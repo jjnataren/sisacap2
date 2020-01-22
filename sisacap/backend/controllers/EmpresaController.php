@@ -899,7 +899,7 @@ class EmpresaController extends Controller
 
     			$model->ID_REPRESENTANTE_LEGAL = $id_legal;
 
-    			$model->save();
+    			$model->save(false);
 
     			Yii::$app->session->setFlash('alert', [
     			'options'=>['class'=>'alert-success'],

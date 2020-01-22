@@ -783,7 +783,7 @@ use backend\models\Constancia;
 
                     $instructor=$model->iDCURSO->iDINSTRUCTOR;
 
-                     if (isset($instructor) &&  $instructor->SIGN_PIC !== NULL && $instructor->getSigningBinary() !== null && $instructor->SIGN_PASSWD !== NULL && $model->ESTATUS >= Constancia::STATUS_SIGNED_INSTRUCTOR): ?>
+                    if (isset($instructor) &&  $instructor->SIGN_PIC !== NULL && $instructor->getSigningBinary() !== null && $instructor->SIGN_PASSWD !== NULL && $model->ESTATUS >= Constancia::STATUS_SIGNED_INSTRUCTOR && $model->ESTATUS != Constancia::STATUS_REJECTED): ?>
 
 							<table>
 							<tr>
@@ -813,6 +813,7 @@ use backend\models\Constancia;
 						<?php
 						$empresaUsuarioModel = EmpresaUsuario::getMyCompany();
 					  $representante = $empresaUsuarioModel->iDEMPRESA->iDREPRESENTANTELEGAL;
+
 
 					  if ($representante->SIGN_PICTURE !== NULL && $representante->SIGN_PASSWD !== NULL
 					      && $representante->getSigningBinary() !== null

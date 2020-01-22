@@ -609,7 +609,7 @@ class TrabajadorController extends Controller
 
     			$worker->ACTIVO = 1;
     			$worker->ID_EMPRESA = $companyModel->ID_EMPRESA;
-
+    			$worker->FECHA_AGREGO = date("Y-m-d H:i:s");
 
 
     			if ($worker->save()) {
@@ -1329,7 +1329,7 @@ class TrabajadorController extends Controller
     			$worker->ACTIVO = 1;
     			$worker->ID_EMPRESA = $companyModel->ID_EMPRESA;
 
-
+    			$worker->FECHA_AGREGO = date("Y-m-d H:i:s");
 
     			if ($worker->save()) {
     				// do something here after saving
@@ -1444,6 +1444,7 @@ class TrabajadorController extends Controller
     			$worker->ACTIVO = 1;
     			$worker->ID_EMPRESA = $companyModel->ID_EMPRESA;
 
+    			$worker->FECHA_AGREGO = date("Y-m-d H:i:s");
 
 
     			if ($worker->save()) {

@@ -43,16 +43,16 @@ if ($model->OCUPACION_ESPECIFICA === '99999'){
 ?>
 <div class="trabajador-view">
 
-   
 
-    
+
+
      <div class=" col-xs-12 col-sm-12 col-md-9">
 				<div class="panel panel-info">
 					<div class="panel-heading">
 						<h3><i class="fa fa-eye"></i>
-						
+
 						<?= Yii::t('backend', 'Detalles') ?> <small>Trabajador</small> </h3>
-						
+
 					</div>
 					<div class="panel-body">
 
@@ -65,13 +65,13 @@ if ($model->OCUPACION_ESPECIFICA === '99999'){
             'NOMBRE',
             'APP',
             'APM',
-			
+
     		//SEXO
     		[
     		'attribute'=>'SEXO',
     		'type'=>'raw',
     		'value'=>isset($model->SEX_TIPO[ $model->SEXO])? $model->SEX_TIPO[$model->SEXO]: 'no establecido'
-    		
+
     				],
             'CURP',
             'RFC',
@@ -90,19 +90,19 @@ if ($model->OCUPACION_ESPECIFICA === '99999'){
     		'attribute'=>'GRADO_ESTUDIO',
     		'type'=>'raw',
     		'value'=>isset($model->GRADO_TIPO[ $model->GRADO_ESTUDIO])? $model->GRADO_TIPO[$model->GRADO_ESTUDIO]: 'no establecido'
-    		
+
     				],
     		[
     		'attribute'=>'DOCUMENTO_PROBATORIO',
     		'type'=>'raw',
     		'value'=>isset($model->DOC_TIPO[ $model->DOCUMENTO_PROBATORIO ])? $model->DOC_TIPO[$model->DOCUMENTO_PROBATORIO]: 'no establecido'
-    		
+
     				],
     		[
     		'attribute'=>'INSTITUCION_EDUCATIVA',
     		'type'=>'raw',
     		'value'=>isset($model->INST_TIPO[ $model->INSTITUCION_EDUCATIVA])? $model->INST_TIPO[$model->INSTITUCION_EDUCATIVA]: 'no establecido'
-    		
+
     				],
     		'FECHA_EMISION_CERTIFICADO',
     		[
@@ -121,32 +121,32 @@ if ($model->OCUPACION_ESPECIFICA === '99999'){
     		'CODIGO_POSTAL',
     		'CORREO_ELECTRONICO',
     		'TELEFONO',
-    		//DOCUMENTO APROBATORIO 
-			
-    		
-    		//INSTITUCION EDUCATIVA 
-			
-    		
+    		//DOCUMENTO APROBATORIO
+
+
+    		//INSTITUCION EDUCATIVA
+
+
     		//GRADO DE ESTUDIOS
-    		
-    		
-    	
+
+
+
     		//ntcl
-    		
-    		
-    		
+
+
+
     		//ENTIDAD FEDERATIVA
-		
-			
+
+
     		[
     		'attribute'=> 'NTCL',
     		'type'=>'raw',
-    		'value'=>isset($NTCL) ? $NTCL->NOMBRE : 'no establecido',
+    		'value'=>isset($NTCL) ? $NTCL->NOMBRE : '(no establecido)',
     		],
-    		
+
 			//'OTRO_OCUPACION',
             'FECHA_AGREGO',
-			
+
             //'ACTIVO',
         ],
     ]) ?>
@@ -158,7 +158,7 @@ if ($model->OCUPACION_ESPECIFICA === '99999'){
         <?= Html::a('<i class="fa fa-trash-o"> </i> Eliminar ', ['deletebyuser', 'id' => $model->ID_TRABAJADOR], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => '¿Seguro que quieres borrar este elemento? 
+                'confirm' => '¿Seguro que quieres borrar este elemento?
 ¡Los datos del trabajador no son recuperables!.
 ',
                 'method' => 'post',
